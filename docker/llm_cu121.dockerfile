@@ -44,6 +44,7 @@ RUN apt install -y cron
 RUN apt install -y zip
 RUN apt install -y fuse
 RUN apt install -y moreutils
+RUN apt install -y bc
 
 # IB网卡驱动：https://network.nvidia.com/products/infiniband-drivers/linux/mlnx_ofed/
 # ENV MOFED_VER=23.10-1.1.9.0
@@ -59,19 +60,19 @@ RUN apt install -y moreutils
 RUN pip install -U --no-cache-dir pip
 RUN pip install -U --no-cache-dir setuptools
 
-RUN pip uninstall -y transformer-engine flash-attention
-
+RUN pip uninstall -y transformer-engine flash-attn
 # 依赖pytorch，需要重新编译
-RUN git clone https://github.com/Dao-AILab/flash-attention.git \
+RUN git clone --recurse-submodules https://github.com/Dao-AILab/flash-attention.git \
     && cd flash-attention \
-    && git checkout v2.5.6 \
-    && MAX_JOBS=208 python setup.py install
+    && git checkout v2.4.2 \
+    && MAX_JOBS=208 FLASH_ATTENTION_FORCE_BUILD=TRUE python setup.py bdist_wheel \
+    && cd dist && pip install flash_attn-2.4.2-cp38-cp38-linux_x86_64.whl
 RUN cd flash-attention/csrc/layer_norm \
     && MAX_JOBS=208 pip install .
+RUN cd flash-attention/csrc/rotary \
+    && MAX_JOBS=208 pip install .
 
-# 依赖flash-attention
-# RUN pip uninstall -y transformer-engine \
-#     && MAX_JOBS=208 pip install --no-cache-dir git+https://github.com/NVIDIA/TransformerEngine.git@v1.3
+RUN MAX_JOBS=208 pip install -U --no-cache-dir git+https://github.com/NVIDIA/TransformerEngine.git@v1.4
 
 # # xformers依赖pytorch和flash-attention，可能影响pytorch版本，进而影响nccl版本，重装nccl
 # RUN pip install -U --no-cache-dir --no-deps xformers==0.0.22.post7 --index-url https://download.pytorch.org/whl/cu121

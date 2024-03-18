@@ -1,7 +1,7 @@
 FROM nvcr.io/nvidia/pytorch:22.12-py3
 # ubuntu 20.04
 # python 3.8
-# cuda 12.8.0
+# cuda 11.8.0
 # torch 1.14.0a0+410ce96
 # nccl 2.15.5
 LABEL maintainer="tothemoon"

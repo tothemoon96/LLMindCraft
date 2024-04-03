@@ -6,45 +6,46 @@ FROM nvcr.io/nvidia/pytorch:22.12-py3
 # nccl 2.15.5
 LABEL maintainer="tothemoon"
 WORKDIR /workspace
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
   && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
   && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-  && apt update -y \
-  && apt install gh -y
+  && apt-get update -y \
+  && apt-get install gh -y
+RUN apt-get update -y && apt-get install -y g++-11 cmake ninja-build python3-dev libssl-dev git-lfs
   
-RUN apt install -y libaio-dev
-RUN apt install -y netcat
-RUN apt install -y git-lfs
-RUN apt install -y htop
-RUN apt install -y screen
-RUN apt install -y tmux
-RUN apt install -y locales \
+RUN apt-get install -y libaio-dev
+RUN apt-get install -y netcat
+RUN apt-get install -y htop
+RUN apt-get install -y screen
+RUN apt-get install -y tmux
+RUN apt-get install -y locales \
     && locale-gen en_US.UTF-8 \
     && locale-gen zh_CN.UTF-8 \
     && echo -e 'export LANG=zh_CN.UTF-8' >> /root/.bashrc
-RUN DEBIAN_FRONTEND=noninteractive apt install -y tzdata \
+RUN apt-get install -y tzdata \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-RUN apt install -y net-tools
-RUN apt install -y openssh-server \
+RUN apt-get install -y net-tools
+RUN apt-get install -y openssh-server \
     && sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/" /etc/ssh/sshd_config \
     && sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/" /etc/ssh/sshd_config \
     && sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/" /etc/ssh/sshd_config \
     && echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config \
     && mkdir -p /run/sshd
-RUN apt install -y pdsh \
+RUN apt-get install -y pdsh \
     && chown root:root /usr/lib/x86_64-linux-gnu/pdsh \
     && chmod 755 /usr/lib/x86_64-linux-gnu/pdsh \
     && chown root:root /usr/lib \
     && chmod 755 /usr/lib
-RUN apt install -y bash-completion
-RUN apt install -y socat
-RUN apt install -y locate
-RUN apt install -y cron
-RUN apt install -y zip
-RUN apt install -y fuse
-RUN apt install -y moreutils
-RUN apt install -y bc
+RUN apt-get install -y bash-completion
+RUN apt-get install -y socat
+RUN apt-get install -y locate
+RUN apt-get install -y cron
+RUN apt-get install -y zip
+RUN apt-get install -y fuse
+RUN apt-get install -y moreutils
+RUN apt-get install -y bc
 
 # IB网卡驱动：https://network.nvidia.com/products/infiniband-drivers/linux/mlnx_ofed/
 # ENV MOFED_VER=23.10-1.1.9.0
@@ -93,11 +94,20 @@ RUN pip install -U --no-cache-dir jsonlines
 RUN pip install -U --no-cache-dir fire openai
 RUN pip install -U --no-cache-dir rich
 RUN pip install -U --no-cache-dir pylcs
+# magatron
+ENV CUDA=cu11
+ENV PYTHON=cp38
+RUN pip install --no-cache-dir tensorstore==0.1.45
+RUN pip install --no-cache-dir zarr
+RUN wget https://github.com/CVCUDA/CV-CUDA/releases/download/v0.6.0-beta/cvcuda_${CUDA}-0.6.0b0-${PYTHON}-${PYTHON}-linux_x86_64.whl \
+    && pip install cvcuda_${CUDA}-0.6.0b0-${PYTHON}-${PYTHON}-linux_x86_64.whl \
+    && rm -rf cvcuda_${CUDA}-0.6.0b0-${PYTHON}-${PYTHON}-linux_x86_64.whl
+
 # huggingface全家桶
 RUN pip uninstall -y trl accelerate transformers peft deepspeed datasets
 RUN pip install --no-cache-dir transformers[deepspeed] \
     && pip install --no-cache-dir trl peft datasets
-RUN pip install -U --no-cache-dir tiktoken transformers-stream-generator openai
+RUN pip install -U --no-cache-dir tiktoken transformers-stream-generator openai lm_dataformat ftfy nltk sentencepiece
 
 # vim
 RUN wget -O /root/.vimrc 'https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc01LbTN0MEszbFlnWlZsc0JJM1hhTGR3bWNJNHc/root/content' \

@@ -74,7 +74,8 @@ RUN cd flash-attention/csrc/rotary \
     && MAX_JOBS=208 pip install .
 
 RUN MAX_JOBS=208 pip install -U --no-cache-dir git+https://github.com/NVIDIA/TransformerEngine.git@v1.4
-
+RUN pip install --no-cache-dir git+https://github.com/fanshiqing/grouped_gemm@main
+ 
 # # xformers依赖pytorch和flash-attention，可能影响pytorch版本，进而影响nccl版本，重装nccl
 # RUN pip install -U --no-cache-dir --no-deps xformers==0.0.22.post7 --index-url https://download.pytorch.org/whl/cu121
 RUN pip install -U --no-cache-dir bitsandbytes

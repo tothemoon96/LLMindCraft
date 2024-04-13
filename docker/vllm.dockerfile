@@ -20,7 +20,7 @@ RUN apt-get install -y tzdata \
 
 RUN python3 -m pip install -U --no-cache-dir pip setuptools pudb
 # delete packages depend on torch
-RUN pip uninstall -y torch transformer-engine flash-attn apex torch-tensorrt torchtext torchvision
+RUN pip uninstall -y torch transformer-engine flash-attn apex torch-tensorrt torchtext torchvision triton
 
 # build pytorch
 RUN git clone --recursive https://github.com/pytorch/pytorch.git
@@ -29,7 +29,10 @@ RUN cd pytorch && \
     git submodule sync && \
     git submodule update --init --recursive
 ENV PYTORCH_BUILD_VERSION=2.1.2 PYTORCH_VERSION=2.1.2 PYTORCH_BUILD_NUMBER=0 TARGETARCH=amd64 PYVER=3.8
-ENV TORCH_CUDA_ARCH_LIST="7.0;7.2;7.5;8.0;8.6;8.7;8.9;9.0"
+ENV TORCH_CUDA_ARCH_LIST="5.2 6.0 6.1 7.0 7.5 8.0 8.6 9.0+PTX"
+ENV CUDA_HOME=/usr/local/cuda
+ENV CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+ENV _GLIBCXX_USE_CXX11_ABI=0
 RUN cd pytorch && \
     MAX_JOBS=208 \
     BUILD_TEST=0 \
@@ -51,21 +54,23 @@ RUN git clone --recursive https://github.com/vllm-project/vllm.git && \
     cd vllm && \
     git checkout v0.4.0.post1 && \
     git submodule sync && \
-    git submodule update --init --recursive
+    git submodule update --init --recursive && \
+    pip install -r requirements.txt
 RUN cd vllm && \
     MAX_JOBS=208 \
     python3 -m pip install -e .
 
-# # vim
-# RUN wget -O /root/.vimrc 'https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc01LbTN0MEszbFlnWlZsc0JJM1hhTGR3bWNJNHc/root/content' \
-#     && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
-#     && vim +PluginInstall +qall
+# vim
+RUN wget -O /root/.vimrc 'https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc01LbTN0MEszbFlnWlZsc0JJM1hhTGR3bWNJNHc/root/content' \
+    && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
+    && vim +PluginInstall +qall
 
-# # pudb
-# RUN mkdir -p /root/.config/pudb \
-#     && wget -O /root/.config/pudb/pudb.cfg 'https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc01LbTN0MEszbFlnWlZrQjlYNDQtTEJHWnoxVVE/root/content'
+# pudb
+RUN mkdir -p /root/.config/pudb \
+    && wget -O /root/.config/pudb/pudb.cfg 'https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc01LbTN0MEszbFlnWlZrQjlYNDQtTEJHWnoxVVE/root/content'
 
 
-# RUN python3 -m pip install -U --no-cache-dir transformers-stream-generator 
-# ENTRYPOINT ["/usr/bin/python3", "-m", "vllm.entrypoints.openai.api_server"]
-# CMD ["--tensor-parallel-size", "8"]
+RUN python3 -m pip install -U --no-cache-dir transformers-stream-generator pipdeptree
+RUN echo "export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7" >> /root/.bashrc
+ENTRYPOINT ["/usr/bin/python3", "-m", "vllm.entrypoints.openai.api_server"]
+CMD ["--tensor-parallel-size", "8"]

@@ -63,11 +63,16 @@ RUN pip install -U --no-cache-dir setuptools
 
 RUN pip uninstall -y transformer-engine flash-attn
 # 依赖pytorch，需要重新编译
-RUN git clone --recurse-submodules https://github.com/Dao-AILab/flash-attention.git \
-    && cd flash-attention \
-    && git checkout v2.4.2 \
-    && MAX_JOBS=208 FLASH_ATTENTION_FORCE_BUILD=TRUE python setup.py bdist_wheel \
-    && cd dist && pip install flash_attn-2.4.2-cp38-cp38-linux_x86_64.whl
+ENV FLASH_ATTENTION_VERSION=2.4.2
+RUN git clone --recursive https://github.com/Dao-AILab/flash-attention.git && \
+    cd flash-attention && \
+    git checkout v${FLASH_ATTENTION_VERSION} && \
+    git submodule sync && \
+    git submodule update --init --recursive
+RUN cd flash-attention && \
+    MAX_JOBS=208 FLASH_ATTENTION_FORCE_BUILD=TRUE FLASH_ATTENTION_FORCE_CXX11_ABI=FALSE python setup.py bdist_wheel && \
+    cd dist && \
+    pip install flash_attn-${FLASH_ATTENTION_VERSION}-cp38-cp38-linux_x86_64.whl
 RUN cd flash-attention/csrc/layer_norm \
     && MAX_JOBS=208 pip install .
 RUN cd flash-attention/csrc/rotary \

@@ -29,15 +29,15 @@ RUN cd pytorch && \
     git submodule sync && \
     git submodule update --init --recursive
 ENV PYTORCH_BUILD_VERSION=2.1.2 PYTORCH_VERSION=2.1.2 PYTORCH_BUILD_NUMBER=0 TARGETARCH=amd64 PYVER=3.8
-ENV TORCH_CUDA_ARCH_LIST="5.2 6.0 6.1 7.0 7.5 8.0 8.6 9.0+PTX"
-ENV CUDA_HOME=/usr/local/cuda
-ENV CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
-ENV _GLIBCXX_USE_CXX11_ABI=0
+ENV CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 CUDA_MODULE_LOADING=EAGER TORCH_CUDA_ARCH_LIST="5.2 6.0 6.1 7.0 7.5 8.0 8.6 9.0+PTX" CUDA_HOME=/usr/local/cuda CUDNN_LIBRARY=/usr/local/cuda/lib64 CUDNN_INCLUDE_DIR=/usr/local/cuda/include
 RUN cd pytorch && \
     MAX_JOBS=208 \
+    _GLIBCXX_USE_CXX11_ABI=0 \
     BUILD_TEST=0 \
     USE_CUPTI_SO=1 \
     USE_KINETO=1 \
+    USE_CUDA=1 \
+    USE_CUDNN=1 \
     CMAKE_PREFIX_PATH="/usr/local" \
     NCCL_ROOT="/usr" \
     NCCL_INCLUDE_DIR="/usr/include/" \
@@ -50,6 +50,16 @@ RUN cd pytorch && \
     python3 setup.py clean
 
 # build vllm
+ENV FLASH_ATTENTION_VERSION=2.3.6
+RUN git clone --recursive https://github.com/Dao-AILab/flash-attention.git && \
+    cd flash-attention && \
+    git checkout v${FLASH_ATTENTION_VERSION} && \
+    git submodule sync && \
+    git submodule update --init --recursive
+RUN cd flash-attention && \
+    MAX_JOBS=208 FLASH_ATTENTION_FORCE_BUILD=TRUE FLASH_ATTENTION_FORCE_CXX11_ABI=FALSE python setup.py bdist_wheel && \
+    cd dist && \
+    pip install flash_attn-${FLASH_ATTENTION_VERSION}-cp38-cp38-linux_x86_64.whl
 RUN git clone --recursive https://github.com/vllm-project/vllm.git && \
     cd vllm && \
     git checkout v0.4.0.post1 && \

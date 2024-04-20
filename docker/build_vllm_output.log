@@ -31452,20 +31452,569 @@ Building wheel torch-2.1.2
 running clean
 Removing intermediate container ec36ee962f35
  ---> 5c7b9d2d9a9a
-Step 17/27 : ENV FLASH_ATTENTION_VERSION=2.3.6
+Step 17/27 : ENV FLASH_ATTENTION_VERSION=2.5.7
  ---> Using cache
- ---> d6db302c155f
+ ---> f6086eb95b9e
 Step 18/27 : RUN git clone --recursive https://github.com/Dao-AILab/flash-attention.git &&     cd flash-attention &&     git checkout v${FLASH_ATTENTION_VERSION} &&     git submodule sync &&     git submodule update --init --recursive
  ---> Using cache
- ---> 8216565c20a6
-Step 19/27 : RUN cd flash-attention &&     MAX_JOBS=208 FLASH_ATTENTION_FORCE_BUILD=TRUE FLASH_ATTENTION_FORCE_CXX11_ABI=FALSE python setup.py bdist_wheel &&     cd dist &&     pip install flash_attn-${FLASH_ATTENTION_VERSION}-cp38-cp38-linux_x86_64.whl
- ---> Using cache
- ---> bd6d0fa1e6c7
+ ---> 751dfff952eb
+Step 19/27 : RUN cd flash-attention &&     MAX_JOBS=208 FLASH_ATTENTION_FORCE_BUILD=TRUE FLASH_ATTENTION_FORCE_CXX11_ABI=FALSE python setup.py bdist_wheel &&     cd dist &&     pip install flash_attn-${FLASH_ATTENTION_VERSION}-cp38-cp38-linux_x86_64.whl &&     cd .. &&     python3 setup.py clean
+ ---> Running in e6af1a95e3f3
+
+
+torch.__version__  = 2.1.2
+
+
+running bdist_wheel
+running build
+running build_py
+creating build
+creating build/lib.linux-x86_64-3.8
+creating build/lib.linux-x86_64-3.8/flash_attn
+copying flash_attn/__init__.py -> build/lib.linux-x86_64-3.8/flash_attn
+copying flash_attn/bert_padding.py -> build/lib.linux-x86_64-3.8/flash_attn
+copying flash_attn/flash_attn_interface.py -> build/lib.linux-x86_64-3.8/flash_attn
+copying flash_attn/flash_attn_triton.py -> build/lib.linux-x86_64-3.8/flash_attn
+copying flash_attn/flash_attn_triton_og.py -> build/lib.linux-x86_64-3.8/flash_attn
+copying flash_attn/flash_blocksparse_attention.py -> build/lib.linux-x86_64-3.8/flash_attn
+copying flash_attn/flash_blocksparse_attn_interface.py -> build/lib.linux-x86_64-3.8/flash_attn
+copying flash_attn/fused_softmax.py -> build/lib.linux-x86_64-3.8/flash_attn
+creating build/lib.linux-x86_64-3.8/flash_attn/layers
+copying flash_attn/layers/__init__.py -> build/lib.linux-x86_64-3.8/flash_attn/layers
+copying flash_attn/layers/patch_embed.py -> build/lib.linux-x86_64-3.8/flash_attn/layers
+copying flash_attn/layers/rotary.py -> build/lib.linux-x86_64-3.8/flash_attn/layers
+creating build/lib.linux-x86_64-3.8/flash_attn/losses
+copying flash_attn/losses/__init__.py -> build/lib.linux-x86_64-3.8/flash_attn/losses
+copying flash_attn/losses/cross_entropy.py -> build/lib.linux-x86_64-3.8/flash_attn/losses
+creating build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/__init__.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/baichuan.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/bert.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/bigcode.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/btlm.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/falcon.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/gpt.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/gpt_neox.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/gptj.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/llama.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/opt.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+copying flash_attn/models/vit.py -> build/lib.linux-x86_64-3.8/flash_attn/models
+creating build/lib.linux-x86_64-3.8/flash_attn/modules
+copying flash_attn/modules/__init__.py -> build/lib.linux-x86_64-3.8/flash_attn/modules
+copying flash_attn/modules/block.py -> build/lib.linux-x86_64-3.8/flash_attn/modules
+copying flash_attn/modules/embedding.py -> build/lib.linux-x86_64-3.8/flash_attn/modules
+copying flash_attn/modules/mha.py -> build/lib.linux-x86_64-3.8/flash_attn/modules
+copying flash_attn/modules/mlp.py -> build/lib.linux-x86_64-3.8/flash_attn/modules
+creating build/lib.linux-x86_64-3.8/flash_attn/ops
+copying flash_attn/ops/__init__.py -> build/lib.linux-x86_64-3.8/flash_attn/ops
+copying flash_attn/ops/activations.py -> build/lib.linux-x86_64-3.8/flash_attn/ops
+copying flash_attn/ops/fused_dense.py -> build/lib.linux-x86_64-3.8/flash_attn/ops
+copying flash_attn/ops/layer_norm.py -> build/lib.linux-x86_64-3.8/flash_attn/ops
+copying flash_attn/ops/rms_norm.py -> build/lib.linux-x86_64-3.8/flash_attn/ops
+creating build/lib.linux-x86_64-3.8/flash_attn/utils
+copying flash_attn/utils/__init__.py -> build/lib.linux-x86_64-3.8/flash_attn/utils
+copying flash_attn/utils/benchmark.py -> build/lib.linux-x86_64-3.8/flash_attn/utils
+copying flash_attn/utils/distributed.py -> build/lib.linux-x86_64-3.8/flash_attn/utils
+copying flash_attn/utils/generation.py -> build/lib.linux-x86_64-3.8/flash_attn/utils
+copying flash_attn/utils/pretrained.py -> build/lib.linux-x86_64-3.8/flash_attn/utils
+creating build/lib.linux-x86_64-3.8/flash_attn/ops/triton
+copying flash_attn/ops/triton/__init__.py -> build/lib.linux-x86_64-3.8/flash_attn/ops/triton
+copying flash_attn/ops/triton/cross_entropy.py -> build/lib.linux-x86_64-3.8/flash_attn/ops/triton
+copying flash_attn/ops/triton/k_activations.py -> build/lib.linux-x86_64-3.8/flash_attn/ops/triton
+copying flash_attn/ops/triton/layer_norm.py -> build/lib.linux-x86_64-3.8/flash_attn/ops/triton
+copying flash_attn/ops/triton/linear.py -> build/lib.linux-x86_64-3.8/flash_attn/ops/triton
+copying flash_attn/ops/triton/mlp.py -> build/lib.linux-x86_64-3.8/flash_attn/ops/triton
+copying flash_attn/ops/triton/rotary.py -> build/lib.linux-x86_64-3.8/flash_attn/ops/triton
+running build_ext
+building 'flash_attn_2_cuda' extension
+creating /workspace/flash-attention/build/temp.linux-x86_64-3.8
+creating /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc
+creating /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn
+creating /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src
+[91m/usr/local/lib/python3.8/dist-packages/setuptools/__init__.py:81: _DeprecatedInstaller: setuptools.installer and fetch_build_eggs are deprecated.
+!!
+
+        ********************************************************************************
+        Requirements should be satisfied by a PEP 517 installer.
+        If you are using pip, you can try `pip install --use-pep517`.
+        ********************************************************************************
+
+!!
+  dist.fetch_build_eggs(dist.setup_requires)
+/usr/local/lib/python3.8/dist-packages/torch/utils/cpp_extension.py:424: UserWarning: There are no x86_64-linux-gnu-g++ version bounds defined for CUDA version 12.1
+  warnings.warn(f'There are no {compiler_name} version bounds defined for CUDA version {cuda_str_version}')
+Emitting ninja build file /workspace/flash-attention/build/temp.linux-x86_64-3.8/build.ninja...
+Compiling objects...
+Using envvar MAX_JOBS (208) as the number of workers...
+[0m[1/49] c++ -MMD -MF /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/flash_api.o.d -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g -fstack-protector-strong -Wformat -Werror=format-security -g -fwrapv -O2 -g -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -fPIC -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/flash_api.cpp -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/flash_api.o -O3 -std=c++17 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[2/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim224_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim224_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[3/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim224_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim224_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[4/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim192_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim192_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[5/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim160_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim160_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[6/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim160_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim160_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[7/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim192_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim192_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[8/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim32_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim32_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[9/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim160_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim160_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[10/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim64_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim64_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[11/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim32_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim32_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[12/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim192_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim192_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[13/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim160_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim160_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[14/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim32_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim32_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[15/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim96_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim96_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[16/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim96_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim96_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[17/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim192_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim192_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[18/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim32_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim32_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[19/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim64_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim64_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[20/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim96_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim96_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[21/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim192_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim192_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[22/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim32_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim32_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[23/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim224_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim224_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[24/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim224_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim224_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[25/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim96_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim96_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[26/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim192_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim192_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[27/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim32_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim32_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[28/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim256_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim256_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[29/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim64_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim64_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[30/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim64_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim64_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[31/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim96_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim96_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[32/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim256_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim256_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[33/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim256_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim256_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[34/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim96_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim96_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[35/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim256_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim256_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[36/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim128_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim128_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[37/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_bwd_hdim128_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim128_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[38/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim128_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim128_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[39/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim128_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim128_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[40/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim128_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim128_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[41/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim128_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim128_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[42/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim224_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim224_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[43/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim64_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim64_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[44/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_split_hdim64_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim64_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[45/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim224_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim224_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[46/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim160_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim160_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[47/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim160_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim160_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[48/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim256_bf16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim256_bf16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+[49/49] /usr/local/cuda/bin/nvcc  -I/workspace/flash-attention/csrc/flash_attn -I/workspace/flash-attention/csrc/flash_attn/src -I/workspace/flash-attention/csrc/cutlass/include -I/usr/local/lib/python3.8/dist-packages/torch/include -I/usr/local/lib/python3.8/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.8/dist-packages/torch/include/TH -I/usr/local/lib/python3.8/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.8 -c -c /workspace/flash-attention/csrc/flash_attn/src/flash_fwd_hdim256_fp16_sm80.cu -o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim256_fp16_sm80.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda --use_fast_math -gencode arch=compute_80,code=sm_80 -gencode arch=compute_90,code=sm_90 --threads 4 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=flash_attn_2_cuda -D_GLIBCXX_USE_CXX11_ABI=0
+x86_64-linux-gnu-g++ -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -g -fwrapv -O2 -Wl,-Bsymbolic-functions -Wl,-z,relro -g -fwrapv -O2 -g -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/flash_api.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim32_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim32_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim64_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim64_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim96_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim96_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim128_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim128_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim160_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim160_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim192_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim192_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim224_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim224_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim256_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_hdim256_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim32_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim32_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim64_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim64_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim96_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim96_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim128_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim128_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim160_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim160_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim192_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim192_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim224_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim224_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim256_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_bwd_hdim256_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim32_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim32_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim64_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim64_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim96_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim96_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim128_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim128_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim160_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim160_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim192_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim192_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim224_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim224_bf16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim256_fp16_sm80.o /workspace/flash-attention/build/temp.linux-x86_64-3.8/csrc/flash_attn/src/flash_fwd_split_hdim256_bf16_sm80.o -L/usr/local/lib/python3.8/dist-packages/torch/lib -L/usr/local/cuda/lib64 -lc10 -ltorch -ltorch_cpu -ltorch_python -lcudart -lc10_cuda -ltorch_cuda -o build/lib.linux-x86_64-3.8/flash_attn_2_cuda.cpython-38-x86_64-linux-gnu.so
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/flash_attn
+copying build/lib.linux-x86_64-3.8/flash_attn/__init__.py -> build/bdist.linux-x86_64/wheel/flash_attn
+copying build/lib.linux-x86_64-3.8/flash_attn/bert_padding.py -> build/bdist.linux-x86_64/wheel/flash_attn
+copying build/lib.linux-x86_64-3.8/flash_attn/flash_attn_interface.py -> build/bdist.linux-x86_64/wheel/flash_attn
+copying build/lib.linux-x86_64-3.8/flash_attn/flash_attn_triton.py -> build/bdist.linux-x86_64/wheel/flash_attn
+copying build/lib.linux-x86_64-3.8/flash_attn/flash_attn_triton_og.py -> build/bdist.linux-x86_64/wheel/flash_attn
+copying build/lib.linux-x86_64-3.8/flash_attn/flash_blocksparse_attention.py -> build/bdist.linux-x86_64/wheel/flash_attn
+copying build/lib.linux-x86_64-3.8/flash_attn/flash_blocksparse_attn_interface.py -> build/bdist.linux-x86_64/wheel/flash_attn
+copying build/lib.linux-x86_64-3.8/flash_attn/fused_softmax.py -> build/bdist.linux-x86_64/wheel/flash_attn
+creating build/bdist.linux-x86_64/wheel/flash_attn/layers
+copying build/lib.linux-x86_64-3.8/flash_attn/layers/__init__.py -> build/bdist.linux-x86_64/wheel/flash_attn/layers
+copying build/lib.linux-x86_64-3.8/flash_attn/layers/patch_embed.py -> build/bdist.linux-x86_64/wheel/flash_attn/layers
+copying build/lib.linux-x86_64-3.8/flash_attn/layers/rotary.py -> build/bdist.linux-x86_64/wheel/flash_attn/layers
+creating build/bdist.linux-x86_64/wheel/flash_attn/losses
+copying build/lib.linux-x86_64-3.8/flash_attn/losses/__init__.py -> build/bdist.linux-x86_64/wheel/flash_attn/losses
+copying build/lib.linux-x86_64-3.8/flash_attn/losses/cross_entropy.py -> build/bdist.linux-x86_64/wheel/flash_attn/losses
+creating build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/__init__.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/baichuan.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/bert.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/bigcode.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/btlm.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/falcon.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/gpt.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/gpt_neox.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/gptj.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/llama.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/opt.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+copying build/lib.linux-x86_64-3.8/flash_attn/models/vit.py -> build/bdist.linux-x86_64/wheel/flash_attn/models
+creating build/bdist.linux-x86_64/wheel/flash_attn/modules
+copying build/lib.linux-x86_64-3.8/flash_attn/modules/__init__.py -> build/bdist.linux-x86_64/wheel/flash_attn/modules
+copying build/lib.linux-x86_64-3.8/flash_attn/modules/block.py -> build/bdist.linux-x86_64/wheel/flash_attn/modules
+copying build/lib.linux-x86_64-3.8/flash_attn/modules/embedding.py -> build/bdist.linux-x86_64/wheel/flash_attn/modules
+copying build/lib.linux-x86_64-3.8/flash_attn/modules/mha.py -> build/bdist.linux-x86_64/wheel/flash_attn/modules
+copying build/lib.linux-x86_64-3.8/flash_attn/modules/mlp.py -> build/bdist.linux-x86_64/wheel/flash_attn/modules
+creating build/bdist.linux-x86_64/wheel/flash_attn/ops
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/__init__.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/activations.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/fused_dense.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/layer_norm.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/rms_norm.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops
+creating build/bdist.linux-x86_64/wheel/flash_attn/ops/triton
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/triton/__init__.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops/triton
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/triton/cross_entropy.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops/triton
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/triton/k_activations.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops/triton
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/triton/layer_norm.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops/triton
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/triton/linear.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops/triton
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/triton/mlp.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops/triton
+copying build/lib.linux-x86_64-3.8/flash_attn/ops/triton/rotary.py -> build/bdist.linux-x86_64/wheel/flash_attn/ops/triton
+creating build/bdist.linux-x86_64/wheel/flash_attn/utils
+copying build/lib.linux-x86_64-3.8/flash_attn/utils/__init__.py -> build/bdist.linux-x86_64/wheel/flash_attn/utils
+copying build/lib.linux-x86_64-3.8/flash_attn/utils/benchmark.py -> build/bdist.linux-x86_64/wheel/flash_attn/utils
+copying build/lib.linux-x86_64-3.8/flash_attn/utils/distributed.py -> build/bdist.linux-x86_64/wheel/flash_attn/utils
+copying build/lib.linux-x86_64-3.8/flash_attn/utils/generation.py -> build/bdist.linux-x86_64/wheel/flash_attn/utils
+copying build/lib.linux-x86_64-3.8/flash_attn/utils/pretrained.py -> build/bdist.linux-x86_64/wheel/flash_attn/utils
+copying build/lib.linux-x86_64-3.8/flash_attn_2_cuda.cpython-38-x86_64-linux-gnu.so -> build/bdist.linux-x86_64/wheel
+running install_egg_info
+running egg_info
+creating flash_attn.egg-info
+writing flash_attn.egg-info/PKG-INFO
+writing dependency_links to flash_attn.egg-info/dependency_links.txt
+writing requirements to flash_attn.egg-info/requires.txt
+writing top-level names to flash_attn.egg-info/top_level.txt
+writing manifest file 'flash_attn.egg-info/SOURCES.txt'
+reading manifest file 'flash_attn.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+[91m/usr/lib/python3.8/distutils/cmd.py:62: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+warning: no files found matching '*.cu' under directory 'flash_attn'
+[0m[91mwarning: no files found matching '*.h' under directory 'flash_attn'
+[0m[91mwarning: no files found matching '*.cuh' under directory 'flash_attn'
+[0m[91mwarning: no files found matching '*.cpp' under directory 'flash_attn'
+[0m[91mwarning: no files found matching '*.hpp' under directory 'flash_attn'
+[0madding license file 'LICENSE'
+adding license file 'AUTHORS'
+writing manifest file 'flash_attn.egg-info/SOURCES.txt'
+Copying flash_attn.egg-info to build/bdist.linux-x86_64/wheel/flash_attn-2.5.7-py3.8.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/flash_attn-2.5.7.dist-info/WHEEL
+creating 'dist/flash_attn-2.5.7-cp38-cp38-linux_x86_64.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'flash_attn_2_cuda.cpython-38-x86_64-linux-gnu.so'
+adding 'flash_attn/__init__.py'
+adding 'flash_attn/bert_padding.py'
+adding 'flash_attn/flash_attn_interface.py'
+adding 'flash_attn/flash_attn_triton.py'
+adding 'flash_attn/flash_attn_triton_og.py'
+adding 'flash_attn/flash_blocksparse_attention.py'
+adding 'flash_attn/flash_blocksparse_attn_interface.py'
+adding 'flash_attn/fused_softmax.py'
+adding 'flash_attn/layers/__init__.py'
+adding 'flash_attn/layers/patch_embed.py'
+adding 'flash_attn/layers/rotary.py'
+adding 'flash_attn/losses/__init__.py'
+adding 'flash_attn/losses/cross_entropy.py'
+adding 'flash_attn/models/__init__.py'
+adding 'flash_attn/models/baichuan.py'
+adding 'flash_attn/models/bert.py'
+adding 'flash_attn/models/bigcode.py'
+adding 'flash_attn/models/btlm.py'
+adding 'flash_attn/models/falcon.py'
+adding 'flash_attn/models/gpt.py'
+adding 'flash_attn/models/gpt_neox.py'
+adding 'flash_attn/models/gptj.py'
+adding 'flash_attn/models/llama.py'
+adding 'flash_attn/models/opt.py'
+adding 'flash_attn/models/vit.py'
+adding 'flash_attn/modules/__init__.py'
+adding 'flash_attn/modules/block.py'
+adding 'flash_attn/modules/embedding.py'
+adding 'flash_attn/modules/mha.py'
+adding 'flash_attn/modules/mlp.py'
+adding 'flash_attn/ops/__init__.py'
+adding 'flash_attn/ops/activations.py'
+adding 'flash_attn/ops/fused_dense.py'
+adding 'flash_attn/ops/layer_norm.py'
+adding 'flash_attn/ops/rms_norm.py'
+adding 'flash_attn/ops/triton/__init__.py'
+adding 'flash_attn/ops/triton/cross_entropy.py'
+adding 'flash_attn/ops/triton/k_activations.py'
+adding 'flash_attn/ops/triton/layer_norm.py'
+adding 'flash_attn/ops/triton/linear.py'
+adding 'flash_attn/ops/triton/mlp.py'
+adding 'flash_attn/ops/triton/rotary.py'
+adding 'flash_attn/utils/__init__.py'
+adding 'flash_attn/utils/benchmark.py'
+adding 'flash_attn/utils/distributed.py'
+adding 'flash_attn/utils/generation.py'
+adding 'flash_attn/utils/pretrained.py'
+adding 'flash_attn-2.5.7.dist-info/AUTHORS'
+adding 'flash_attn-2.5.7.dist-info/LICENSE'
+adding 'flash_attn-2.5.7.dist-info/METADATA'
+adding 'flash_attn-2.5.7.dist-info/WHEEL'
+adding 'flash_attn-2.5.7.dist-info/top_level.txt'
+adding 'flash_attn-2.5.7.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
+Processing ./flash_attn-2.5.7-cp38-cp38-linux_x86_64.whl
+Requirement already satisfied: torch in /usr/local/lib/python3.8/dist-packages (from flash-attn==2.5.7) (2.1.2)
+Collecting einops (from flash-attn==2.5.7)
+  Downloading einops-0.7.0-py3-none-any.whl.metadata (13 kB)
+Requirement already satisfied: packaging in /usr/local/lib/python3.8/dist-packages (from flash-attn==2.5.7) (23.0)
+Collecting ninja (from flash-attn==2.5.7)
+  Downloading ninja-1.11.1.1-py2.py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl.metadata (5.3 kB)
+Requirement already satisfied: filelock in /usr/local/lib/python3.8/dist-packages (from torch->flash-attn==2.5.7) (3.11.0)
+Requirement already satisfied: typing-extensions in /usr/local/lib/python3.8/dist-packages (from torch->flash-attn==2.5.7) (4.5.0)
+Requirement already satisfied: sympy in /usr/local/lib/python3.8/dist-packages (from torch->flash-attn==2.5.7) (1.11.1)
+Requirement already satisfied: networkx in /usr/local/lib/python3.8/dist-packages (from torch->flash-attn==2.5.7) (2.6.3)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.8/dist-packages (from torch->flash-attn==2.5.7) (3.1.2)
+Requirement already satisfied: fsspec in /usr/local/lib/python3.8/dist-packages (from torch->flash-attn==2.5.7) (2023.4.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.8/dist-packages (from jinja2->torch->flash-attn==2.5.7) (2.1.2)
+Requirement already satisfied: mpmath>=0.19 in /usr/local/lib/python3.8/dist-packages (from sympy->torch->flash-attn==2.5.7) (1.3.0)
+Downloading einops-0.7.0-py3-none-any.whl (44 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 350.2 kB/s eta 0:00:00
+Downloading ninja-1.11.1.1-py2.py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl (307 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 307.2/307.2 kB 541.4 kB/s eta 0:00:00
+Installing collected packages: ninja, einops, flash-attn
+Successfully installed einops-0.7.0 flash-attn-2.5.7 ninja-1.11.1.1
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0m
+
+torch.__version__  = 2.1.2
+
+
+running clean
+removing 'build/temp.linux-x86_64-3.8' (and everything under it)
+[91m/usr/local/lib/python3.8/dist-packages/setuptools/__init__.py:81: _DeprecatedInstaller: setuptools.installer and fetch_build_eggs are deprecated.
+!!
+
+        ********************************************************************************
+        Requirements should be satisfied by a PEP 517 installer.
+        If you are using pip, you can try `pip install --use-pep517`.
+        ********************************************************************************
+
+!!
+  dist.fetch_build_eggs(dist.setup_requires)
+[0mRemoving intermediate container e6af1a95e3f3
+ ---> de6c3bb41749
 Step 20/27 : RUN git clone --recursive https://github.com/vllm-project/vllm.git &&     cd vllm &&     git checkout v0.4.0.post1 &&     git submodule sync &&     git submodule update --init --recursive &&     pip install -r requirements.txt
- ---> Using cache
- ---> 34b359c8ab7d
+ ---> Running in 4110aee22241
+[91mCloning into 'vllm'...
+[0m[91mNote: switching to 'v0.4.0.post1'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at a3c226e [CI/Build] 0.4.0.post1, fix sm 7.0/7.5 binary (#3803)
+[0mLooking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
+Requirement already satisfied: cmake>=3.21 in /usr/local/lib/python3.8/dist-packages (from -r requirements.txt (line 1)) (3.24.1.1)
+Requirement already satisfied: ninja in /usr/local/lib/python3.8/dist-packages (from -r requirements.txt (line 2)) (1.11.1.1)
+Requirement already satisfied: psutil in /usr/local/lib/python3.8/dist-packages (from -r requirements.txt (line 3)) (5.9.4)
+Collecting ray>=2.9 (from -r requirements.txt (line 4))
+  Downloading ray-2.10.0-cp38-cp38-manylinux2014_x86_64.whl.metadata (13 kB)
+Collecting sentencepiece (from -r requirements.txt (line 5))
+  Downloading sentencepiece-0.2.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (from -r requirements.txt (line 6)) (1.22.2)
+Requirement already satisfied: torch==2.1.2 in /usr/local/lib/python3.8/dist-packages (from -r requirements.txt (line 7)) (2.1.2)
+Requirement already satisfied: requests in /usr/local/lib/python3.8/dist-packages (from -r requirements.txt (line 8)) (2.28.2)
+Collecting py-cpuinfo (from -r requirements.txt (line 9))
+  Downloading py_cpuinfo-9.0.0-py3-none-any.whl.metadata (794 bytes)
+Collecting transformers>=4.39.1 (from -r requirements.txt (line 10))
+  Downloading transformers-4.40.0-py3-none-any.whl.metadata (137 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 137.6/137.6 kB 1.3 MB/s eta 0:00:00
+Collecting xformers==0.0.23.post1 (from -r requirements.txt (line 11))
+  Downloading xformers-0.0.23.post1-cp38-cp38-manylinux2014_x86_64.whl.metadata (1.0 kB)
+Collecting fastapi (from -r requirements.txt (line 12))
+  Downloading fastapi-0.110.2-py3-none-any.whl.metadata (24 kB)
+Collecting pydantic>=2.0 (from -r requirements.txt (line 14))
+  Downloading pydantic-2.7.0-py3-none-any.whl.metadata (103 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.4/103.4 kB 978.8 kB/s eta 0:00:00
+Collecting prometheus_client>=0.18.0 (from -r requirements.txt (line 15))
+  Downloading prometheus_client-0.20.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting pynvml==11.5.0 (from -r requirements.txt (line 16))
+  Downloading pynvml-11.5.0-py3-none-any.whl.metadata (7.8 kB)
+Collecting triton>=2.1.0 (from -r requirements.txt (line 17))
+  Downloading triton-2.3.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.4 kB)
+Collecting outlines==0.0.34 (from -r requirements.txt (line 18))
+  Downloading outlines-0.0.34-py3-none-any.whl.metadata (13 kB)
+Collecting tiktoken==0.6.0 (from -r requirements.txt (line 19))
+  Downloading tiktoken-0.6.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+Collecting uvicorn[standard] (from -r requirements.txt (line 13))
+  Downloading uvicorn-0.29.0-py3-none-any.whl.metadata (6.3 kB)
+Requirement already satisfied: filelock in /usr/local/lib/python3.8/dist-packages (from torch==2.1.2->-r requirements.txt (line 7)) (3.11.0)
+Requirement already satisfied: typing-extensions in /usr/local/lib/python3.8/dist-packages (from torch==2.1.2->-r requirements.txt (line 7)) (4.5.0)
+Requirement already satisfied: sympy in /usr/local/lib/python3.8/dist-packages (from torch==2.1.2->-r requirements.txt (line 7)) (1.11.1)
+Requirement already satisfied: networkx in /usr/local/lib/python3.8/dist-packages (from torch==2.1.2->-r requirements.txt (line 7)) (2.6.3)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.8/dist-packages (from torch==2.1.2->-r requirements.txt (line 7)) (3.1.2)
+Requirement already satisfied: fsspec in /usr/local/lib/python3.8/dist-packages (from torch==2.1.2->-r requirements.txt (line 7)) (2023.4.0)
+Collecting interegular (from outlines==0.0.34->-r requirements.txt (line 18))
+  Downloading interegular-0.3.3-py37-none-any.whl.metadata (3.0 kB)
+Collecting lark (from outlines==0.0.34->-r requirements.txt (line 18))
+  Downloading lark-1.1.9-py3-none-any.whl.metadata (1.9 kB)
+Requirement already satisfied: nest-asyncio in /usr/local/lib/python3.8/dist-packages (from outlines==0.0.34->-r requirements.txt (line 18)) (1.5.6)
+Requirement already satisfied: cloudpickle in /usr/local/lib/python3.8/dist-packages (from outlines==0.0.34->-r requirements.txt (line 18)) (2.2.1)
+Collecting diskcache (from outlines==0.0.34->-r requirements.txt (line 18))
+  Downloading diskcache-5.6.3-py3-none-any.whl.metadata (20 kB)
+Requirement already satisfied: scipy in /usr/local/lib/python3.8/dist-packages (from outlines==0.0.34->-r requirements.txt (line 18)) (1.10.1)
+Requirement already satisfied: numba in /usr/local/lib/python3.8/dist-packages (from outlines==0.0.34->-r requirements.txt (line 18)) (0.56.4+1.g536eedd6e)
+Requirement already satisfied: joblib in /usr/local/lib/python3.8/dist-packages (from outlines==0.0.34->-r requirements.txt (line 18)) (1.2.0)
+Collecting referencing (from outlines==0.0.34->-r requirements.txt (line 18))
+  Downloading referencing-0.34.0-py3-none-any.whl.metadata (2.8 kB)
+Requirement already satisfied: jsonschema in /usr/local/lib/python3.8/dist-packages (from outlines==0.0.34->-r requirements.txt (line 18)) (4.17.3)
+Requirement already satisfied: regex>=2022.1.18 in /usr/local/lib/python3.8/dist-packages (from tiktoken==0.6.0->-r requirements.txt (line 19)) (2023.3.23)
+Requirement already satisfied: click>=7.0 in /usr/local/lib/python3.8/dist-packages (from ray>=2.9->-r requirements.txt (line 4)) (8.1.3)
+Requirement already satisfied: msgpack<2.0.0,>=1.0.0 in /usr/local/lib/python3.8/dist-packages (from ray>=2.9->-r requirements.txt (line 4)) (1.0.5)
+Requirement already satisfied: packaging in /usr/local/lib/python3.8/dist-packages (from ray>=2.9->-r requirements.txt (line 4)) (23.0)
+Requirement already satisfied: protobuf!=3.19.5,>=3.15.3 in /usr/local/lib/python3.8/dist-packages (from ray>=2.9->-r requirements.txt (line 4)) (3.20.3)
+Requirement already satisfied: pyyaml in /usr/local/lib/python3.8/dist-packages (from ray>=2.9->-r requirements.txt (line 4)) (6.0)
+Requirement already satisfied: aiosignal in /usr/local/lib/python3.8/dist-packages (from ray>=2.9->-r requirements.txt (line 4)) (1.3.1)
+Requirement already satisfied: frozenlist in /usr/local/lib/python3.8/dist-packages (from ray>=2.9->-r requirements.txt (line 4)) (1.3.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.8/dist-packages (from requests->-r requirements.txt (line 8)) (3.1.0)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.8/dist-packages (from requests->-r requirements.txt (line 8)) (3.4)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/local/lib/python3.8/dist-packages (from requests->-r requirements.txt (line 8)) (1.26.15)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.8/dist-packages (from requests->-r requirements.txt (line 8)) (2022.12.7)
+Collecting huggingface-hub<1.0,>=0.19.3 (from transformers>=4.39.1->-r requirements.txt (line 10))
+  Downloading huggingface_hub-0.22.2-py3-none-any.whl.metadata (12 kB)
+Collecting tokenizers<0.20,>=0.19 (from transformers>=4.39.1->-r requirements.txt (line 10))
+  Downloading tokenizers-0.19.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Collecting safetensors>=0.4.1 (from transformers>=4.39.1->-r requirements.txt (line 10))
+  Downloading safetensors-0.4.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.8 kB)
+Requirement already satisfied: tqdm>=4.27 in /usr/local/lib/python3.8/dist-packages (from transformers>=4.39.1->-r requirements.txt (line 10)) (4.65.0)
+Collecting starlette<0.38.0,>=0.37.2 (from fastapi->-r requirements.txt (line 12))
+  Downloading starlette-0.37.2-py3-none-any.whl.metadata (5.9 kB)
+Collecting typing-extensions (from torch==2.1.2->-r requirements.txt (line 7))
+  Downloading typing_extensions-4.11.0-py3-none-any.whl.metadata (3.0 kB)
+Collecting h11>=0.8 (from uvicorn[standard]->-r requirements.txt (line 13))
+  Downloading h11-0.14.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting httptools>=0.5.0 (from uvicorn[standard]->-r requirements.txt (line 13))
+  Downloading httptools-0.6.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.6 kB)
+Collecting python-dotenv>=0.13 (from uvicorn[standard]->-r requirements.txt (line 13))
+  Downloading python_dotenv-1.0.1-py3-none-any.whl.metadata (23 kB)
+Collecting uvloop!=0.15.0,!=0.15.1,>=0.14.0 (from uvicorn[standard]->-r requirements.txt (line 13))
+  Downloading uvloop-0.19.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting watchfiles>=0.13 (from uvicorn[standard]->-r requirements.txt (line 13))
+  Downloading watchfiles-0.21.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting websockets>=10.4 (from uvicorn[standard]->-r requirements.txt (line 13))
+  Downloading websockets-12.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+Collecting annotated-types>=0.4.0 (from pydantic>=2.0->-r requirements.txt (line 14))
+  Downloading annotated_types-0.6.0-py3-none-any.whl.metadata (12 kB)
+Collecting pydantic-core==2.18.1 (from pydantic>=2.0->-r requirements.txt (line 14))
+  Downloading pydantic_core-2.18.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+Collecting fsspec (from torch==2.1.2->-r requirements.txt (line 7))
+  Downloading fsspec-2024.3.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting anyio<5,>=3.4.0 (from starlette<0.38.0,>=0.37.2->fastapi->-r requirements.txt (line 12))
+  Downloading anyio-4.3.0-py3-none-any.whl.metadata (4.6 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.8/dist-packages (from jinja2->torch==2.1.2->-r requirements.txt (line 7)) (2.1.2)
+Requirement already satisfied: attrs>=17.4.0 in /usr/local/lib/python3.8/dist-packages (from jsonschema->outlines==0.0.34->-r requirements.txt (line 18)) (22.2.0)
+Requirement already satisfied: importlib-resources>=1.4.0 in /usr/local/lib/python3.8/dist-packages (from jsonschema->outlines==0.0.34->-r requirements.txt (line 18)) (5.12.0)
+Requirement already satisfied: pkgutil-resolve-name>=1.3.10 in /usr/local/lib/python3.8/dist-packages (from jsonschema->outlines==0.0.34->-r requirements.txt (line 18)) (1.3.10)
+Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,>=0.14.0 in /usr/local/lib/python3.8/dist-packages (from jsonschema->outlines==0.0.34->-r requirements.txt (line 18)) (0.19.3)
+Requirement already satisfied: llvmlite<0.40,>=0.39.0dev0 in /usr/local/lib/python3.8/dist-packages (from numba->outlines==0.0.34->-r requirements.txt (line 18)) (0.39.1)
+Requirement already satisfied: importlib-metadata in /usr/local/lib/python3.8/dist-packages (from numba->outlines==0.0.34->-r requirements.txt (line 18)) (6.3.0)
+Collecting rpds-py>=0.7.0 (from referencing->outlines==0.0.34->-r requirements.txt (line 18))
+  Downloading rpds_py-0.18.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Requirement already satisfied: mpmath>=0.19 in /usr/local/lib/python3.8/dist-packages (from sympy->torch==2.1.2->-r requirements.txt (line 7)) (1.3.0)
+Collecting sniffio>=1.1 (from anyio<5,>=3.4.0->starlette<0.38.0,>=0.37.2->fastapi->-r requirements.txt (line 12))
+  Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: exceptiongroup>=1.0.2 in /usr/local/lib/python3.8/dist-packages (from anyio<5,>=3.4.0->starlette<0.38.0,>=0.37.2->fastapi->-r requirements.txt (line 12)) (1.1.1)
+Requirement already satisfied: zipp>=3.1.0 in /usr/local/lib/python3.8/dist-packages (from importlib-resources>=1.4.0->jsonschema->outlines==0.0.34->-r requirements.txt (line 18)) (3.15.0)
+Downloading xformers-0.0.23.post1-cp38-cp38-manylinux2014_x86_64.whl (213.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 213.0/213.0 MB 1.6 MB/s eta 0:00:00
+Downloading pynvml-11.5.0-py3-none-any.whl (53 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.1/53.1 kB 970.5 kB/s eta 0:00:00
+Downloading outlines-0.0.34-py3-none-any.whl (76 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 76.5/76.5 kB 274.2 kB/s eta 0:00:00
+Downloading tiktoken-0.6.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 1.4 MB/s eta 0:00:00
+Downloading ray-2.10.0-cp38-cp38-manylinux2014_x86_64.whl (65.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 65.2/65.2 MB 1.6 MB/s eta 0:00:00
+Downloading sentencepiece-0.2.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 1.8 MB/s eta 0:00:00
+Downloading py_cpuinfo-9.0.0-py3-none-any.whl (22 kB)
+Downloading transformers-4.40.0-py3-none-any.whl (9.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.0/9.0 MB 1.7 MB/s eta 0:00:00
+Downloading fastapi-0.110.2-py3-none-any.whl (91 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 91.9/91.9 kB 273.9 kB/s eta 0:00:00
+Downloading pydantic-2.7.0-py3-none-any.whl (407 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 407.9/407.9 kB 1.3 MB/s eta 0:00:00
+Downloading pydantic_core-2.18.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 1.3 MB/s eta 0:00:00
+Downloading prometheus_client-0.20.0-py3-none-any.whl (54 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 54.5/54.5 kB 972.3 kB/s eta 0:00:00
+Downloading triton-2.3.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (168.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 168.0/168.0 MB 1.6 MB/s eta 0:00:00
+Downloading annotated_types-0.6.0-py3-none-any.whl (12 kB)
+Downloading h11-0.14.0-py3-none-any.whl (58 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.3/58.3 kB 1.0 MB/s eta 0:00:00
+Downloading httptools-0.6.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (354 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 354.4/354.4 kB 1.7 MB/s eta 0:00:00
+Downloading huggingface_hub-0.22.2-py3-none-any.whl (388 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 388.9/388.9 kB 1.4 MB/s eta 0:00:00
+Downloading fsspec-2024.3.1-py3-none-any.whl (171 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 172.0/172.0 kB 1.6 MB/s eta 0:00:00
+Downloading python_dotenv-1.0.1-py3-none-any.whl (19 kB)
+Downloading safetensors-0.4.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 1.2 MB/s eta 0:00:00
+Downloading starlette-0.37.2-py3-none-any.whl (71 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.9/71.9 kB 1.2 MB/s eta 0:00:00
+Downloading tokenizers-0.19.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.6/3.6 MB 1.4 MB/s eta 0:00:00
+Downloading typing_extensions-4.11.0-py3-none-any.whl (34 kB)
+Downloading uvloop-0.19.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.0/4.0 MB 1.6 MB/s eta 0:00:00
+Downloading watchfiles-0.21.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 1.5 MB/s eta 0:00:00
+Downloading websockets-12.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (130 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 130.5/130.5 kB 1.2 MB/s eta 0:00:00
+Downloading diskcache-5.6.3-py3-none-any.whl (45 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.5/45.5 kB 717.0 kB/s eta 0:00:00
+Downloading interegular-0.3.3-py37-none-any.whl (23 kB)
+Downloading lark-1.1.9-py3-none-any.whl (111 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 111.7/111.7 kB 1.9 MB/s eta 0:00:00
+Downloading referencing-0.34.0-py3-none-any.whl (26 kB)
+Downloading uvicorn-0.29.0-py3-none-any.whl (60 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.8/60.8 kB 1.1 MB/s eta 0:00:00
+Downloading anyio-4.3.0-py3-none-any.whl (85 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 85.6/85.6 kB 1.4 MB/s eta 0:00:00
+Downloading rpds_py-0.18.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 1.2 MB/s eta 0:00:00
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Installing collected packages: sentencepiece, py-cpuinfo, websockets, uvloop, typing-extensions, triton, sniffio, safetensors, rpds-py, python-dotenv, pynvml, prometheus_client, lark, interegular, httptools, h11, fsspec, diskcache, uvicorn, tiktoken, referencing, pydantic-core, huggingface-hub, anyio, annotated-types, xformers, watchfiles, tokenizers, starlette, ray, pydantic, transformers, fastapi, outlines
+  Attempting uninstall: typing-extensions
+    Found existing installation: typing_extensions 4.5.0
+    Uninstalling typing_extensions-4.5.0:
+      Successfully uninstalled typing_extensions-4.5.0
+  Attempting uninstall: pynvml
+    Found existing installation: pynvml 11.4.1
+    Uninstalling pynvml-11.4.1:
+      Successfully uninstalled pynvml-11.4.1
+  Attempting uninstall: prometheus_client
+    Found existing installation: prometheus-client 0.16.0
+    Uninstalling prometheus-client-0.16.0:
+      Successfully uninstalled prometheus-client-0.16.0
+  Attempting uninstall: fsspec
+    Found existing installation: fsspec 2023.4.0
+    Uninstalling fsspec-2023.4.0:
+      Successfully uninstalled fsspec-2023.4.0
+  Attempting uninstall: pydantic
+    Found existing installation: pydantic 1.10.7
+    Uninstalling pydantic-1.10.7:
+      Successfully uninstalled pydantic-1.10.7
+[91mERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+confection 0.0.4 requires pydantic!=1.8,!=1.8.1,<1.11.0,>=1.7.4, but you have pydantic 2.7.0 which is incompatible.
+dask-cuda 23.2.0 requires pynvml<11.5,>=11.0.0, but you have pynvml 11.5.0 which is incompatible.
+spacy 3.5.2 requires pydantic!=1.8,!=1.8.1,<1.11.0,>=1.7.4, but you have pydantic 2.7.0 which is incompatible.
+thinc 8.1.9 requires pydantic!=1.8,!=1.8.1,<1.11.0,>=1.7.4, but you have pydantic 2.7.0 which is incompatible.
+[0mSuccessfully installed annotated-types-0.6.0 anyio-4.3.0 diskcache-5.6.3 fastapi-0.110.2 fsspec-2024.3.1 h11-0.14.0 httptools-0.6.1 huggingface-hub-0.22.2 interegular-0.3.3 lark-1.1.9 outlines-0.0.34 prometheus_client-0.20.0 py-cpuinfo-9.0.0 pydantic-2.7.0 pydantic-core-2.18.1 pynvml-11.5.0 python-dotenv-1.0.1 ray-2.10.0 referencing-0.34.0 rpds-py-0.18.0 safetensors-0.4.3 sentencepiece-0.2.0 sniffio-1.3.1 starlette-0.37.2 tiktoken-0.6.0 tokenizers-0.19.1 transformers-4.40.0 triton-2.3.0 typing-extensions-4.11.0 uvicorn-0.29.0 uvloop-0.19.0 watchfiles-0.21.0 websockets-12.0 xformers-0.0.23.post1
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0mRemoving intermediate container 4110aee22241
+ ---> 6f0094f42ff5
 Step 21/27 : RUN cd vllm &&     MAX_JOBS=208     python3 -m pip install -e .
- ---> Running in fdfda894a024
+ ---> Running in d5bd4eb32871
 Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
 Obtaining file:///workspace/vllm
   Installing build dependencies: started
@@ -31565,29 +32114,29 @@ Building wheels for collected packages: vllm
   Building editable for vllm (pyproject.toml): still running...
   Building editable for vllm (pyproject.toml): still running...
   Building editable for vllm (pyproject.toml): finished with status 'done'
-  Created wheel for vllm: filename=vllm-0.4.0.post1-0.editable-cp38-cp38-linux_x86_64.whl size=10286 sha256=625853035608712ba1660d25916ffd1a14e9a1ab872232e867ed28b207e43a7e
-  Stored in directory: /tmp/pip-ephem-wheel-cache-h8_bn0ft/wheels/08/6b/7f/cc252e86effbe0da88756a7159350b2c496a43312e9f8ee335
+  Created wheel for vllm: filename=vllm-0.4.0.post1-0.editable-cp38-cp38-linux_x86_64.whl size=10286 sha256=c572c95047397da57cd2efd43d9186bd08012db874f6318fb7361e8e6aae525f
+  Stored in directory: /tmp/pip-ephem-wheel-cache-cgb9esaf/wheels/08/6b/7f/cc252e86effbe0da88756a7159350b2c496a43312e9f8ee335
 Successfully built vllm
 Installing collected packages: vllm
 Successfully installed vllm-0.4.0.post1
 [91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
-[0mRemoving intermediate container fdfda894a024
- ---> 49c8fd7eec77
+[0mRemoving intermediate container d5bd4eb32871
+ ---> a6a58f0d7d6f
 Step 22/27 : RUN wget -O /root/.vimrc 'https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc01LbTN0MEszbFlnWlZsc0JJM1hhTGR3bWNJNHc/root/content'     && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim     && vim +PluginInstall +qall
- ---> Running in 7b4d37e18e1a
-[91m--2024-04-20 12:05:30--  https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc01LbTN0MEszbFlnWlZsc0JJM1hhTGR3bWNJNHc/root/content
+ ---> Running in f0256cb57438
+[91m--2024-04-20 20:06:30--  https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc01LbTN0MEszbFlnWlZsc0JJM1hhTGR3bWNJNHc/root/content
 [0m[91mConnecting to 127.0.0.1:65530... [0m[91mconnected.
 [0m[91mProxy request sent, awaiting response... [0m[91m302 Found
 Location: https://j9ldeg.bn.files.1drv.com/y4mtzRZWI83HDBAzUGv3_D6No7Tn7-ArWuaS-0qYpuDtsXCoA-KlV9jKj1D8rHTAXNB7AWKbEnN2lu3toHKSeA0d-St7nOInhHbv4vmz9XlPQss2nswTGnVhe6gc4RLPVacpWuMEni-gft1uXBJG4N1HPSbekT0GZ6a_MJ62O0XisHyqVc5X6Bmz3PI90nn_1d-UT2F8yddmodRpg4Rnh-lxg/.vimrc [following]
---2024-04-20 12:05:31--  https://j9ldeg.bn.files.1drv.com/y4mtzRZWI83HDBAzUGv3_D6No7Tn7-ArWuaS-0qYpuDtsXCoA-KlV9jKj1D8rHTAXNB7AWKbEnN2lu3toHKSeA0d-St7nOInhHbv4vmz9XlPQss2nswTGnVhe6gc4RLPVacpWuMEni-gft1uXBJG4N1HPSbekT0GZ6a_MJ62O0XisHyqVc5X6Bmz3PI90nn_1d-UT2F8yddmodRpg4Rnh-lxg/.vimrc
+[0m[91m--2024-04-20 20:06:30--  https://j9ldeg.bn.files.1drv.com/y4mtzRZWI83HDBAzUGv3_D6No7Tn7-ArWuaS-0qYpuDtsXCoA-KlV9jKj1D8rHTAXNB7AWKbEnN2lu3toHKSeA0d-St7nOInhHbv4vmz9XlPQss2nswTGnVhe6gc4RLPVacpWuMEni-gft1uXBJG4N1HPSbekT0GZ6a_MJ62O0XisHyqVc5X6Bmz3PI90nn_1d-UT2F8yddmodRpg4Rnh-lxg/.vimrc
 Connecting to 127.0.0.1:65530... [0m[91mconnected.
 [0m[91mProxy request sent, awaiting response... [0m[91m200 OK
 [0m[91mLength: 5444 (5.3K) [application/octet-stream]
 Saving to: ‘/root/.vimrc’
 [0m[91m
-     0K .....                            [0m[91m                 [0m[91m    100%[0m[91m  112K=0.05s
+     0K ..[0m[91m...                                      [0m[91m          [0m[91m 100%  111K=0.05s[0m[91m
 
-[0m[91m2024-04-20 12:05:32 (112 KB/s) - ‘/root/.vimrc’ saved [5444/5444]
+[0m[91m2024-04-20 20:06:31 (111 KB/s) - ‘/root/.vimrc’ saved [5444/5444]
 
 [0m[91mCloning into '/root/.vim/bundle/Vundle.vim'...
 [0m[91mVim: Warning: Output is not to a terminal
@@ -31644,28 +32193,28 @@ Processing 'davidhalter/jedi-vim'[24;34H[K[7;3H
 Processing helptags[24;20H[K[8;3H
 [34m* [0m[24;1Hhelptags regenerated[8;3H[33mHelptags[0m                              [9;3H[4m                                      [m[23;23H[1m[7m8,0-1[0m
 Done! [24;7H[K[24;1H
-Removing intermediate container 7b4d37e18e1a
- ---> 532b80f85488
+Removing intermediate container f0256cb57438
+ ---> 90bcf3eab5ff
 Step 23/27 : RUN mkdir -p /root/.config/pudb     && wget -O /root/.config/pudb/pudb.cfg 'https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc01LbTN0MEszbFlnWlZrQjlYNDQtTEJHWnoxVVE/root/content'
- ---> Running in f35b0a68bed5
-[91m--2024-04-20 12:06:12--  https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc01LbTN0MEszbFlnWlZrQjlYNDQtTEJHWnoxVVE/root/content
+ ---> Running in 3ccec3bbcf8f
+[91m--2024-04-20 20:07:12--  https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc01LbTN0MEszbFlnWlZrQjlYNDQtTEJHWnoxVVE/root/content
 [0m[91mConnecting to 127.0.0.1:65530... [0m[91mconnected.
 [0m[91mProxy request sent, awaiting response... [0m[91m302 Found
 Location: https://j9lceg.bn.files.1drv.com/y4mbgmrYGJtiievZpE_OFKULPMEGo7ERw9kipYsvehpYSKqDApY60DijwF2qpAT0wUtn-SqQBKG5FnOCNdXgTj9JVutJZHdkcbduMyEBY8B0Gz11l4Zx4Ebo5MrrRTLZZydBCDs74nNLzNZ7hlLoNcQUacMYj0rzBGzgSwExHP34B4mlu5FsYr_bEV0C8OckQYuLQz2_2bnm26_DLYHMEMGOQ/pudb.cfg [following]
---2024-04-20 12:06:13--  https://j9lceg.bn.files.1drv.com/y4mbgmrYGJtiievZpE_OFKULPMEGo7ERw9kipYsvehpYSKqDApY60DijwF2qpAT0wUtn-SqQBKG5FnOCNdXgTj9JVutJZHdkcbduMyEBY8B0Gz11l4Zx4Ebo5MrrRTLZZydBCDs74nNLzNZ7hlLoNcQUacMYj0rzBGzgSwExHP34B4mlu5FsYr_bEV0C8OckQYuLQz2_2bnm26_DLYHMEMGOQ/pudb.cfg
+--2024-04-20 20:07:13--  https://j9lceg.bn.files.1drv.com/y4mbgmrYGJtiievZpE_OFKULPMEGo7ERw9kipYsvehpYSKqDApY60DijwF2qpAT0wUtn-SqQBKG5FnOCNdXgTj9JVutJZHdkcbduMyEBY8B0Gz11l4Zx4Ebo5MrrRTLZZydBCDs74nNLzNZ7hlLoNcQUacMYj0rzBGzgSwExHP34B4mlu5FsYr_bEV0C8OckQYuLQz2_2bnm26_DLYHMEMGOQ/pudb.cfg
 Connecting to 127.0.0.1:65530... [0m[91mconnected.
 [0m[91mProxy request sent, awaiting response... [0m[91m200 OK
 [0m[91mLength: 467 [application/octet-stream]
 Saving to: ‘/root/.config/pudb/pudb.cfg’
 [0m[91m
-     0K                 [0m[91m               [0m[91m                       [0m[91m100%  131M=0s
+     0K                          [0m[91m                             100%[0m[91m  116M=0s
 
-[0m[91m2024-04-20 12:06:13 (131 MB/s) - ‘/root/.config/pudb/pudb.cfg’ saved [467/467]
+[0m[91m2024-04-20 20:07:13 (116 MB/s) - ‘/root/.config/pudb/pudb.cfg’ saved [467/467]
 
-[0mRemoving intermediate container f35b0a68bed5
- ---> 13a28f2e87f3
+[0mRemoving intermediate container 3ccec3bbcf8f
+ ---> 86dfb8274327
 Step 24/27 : RUN python3 -m pip install -U --no-cache-dir transformers-stream-generator pipdeptree
- ---> Running in e91d7554a7f5
+ ---> Running in 82e85a869243
 Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
 Collecting transformers-stream-generator
   Downloading transformers-stream-generator-0.0.5.tar.gz (13 kB)
@@ -31694,12 +32243,12 @@ Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/local/lib/python3.8
 Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.8/dist-packages (from requests->transformers>=4.26.1->transformers-stream-generator) (2022.12.7)
 Downloading pipdeptree-2.18.1-py3-none-any.whl (28 kB)
 Downloading packaging-24.0-py3-none-any.whl (53 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.5/53.5 kB 851.1 kB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.5/53.5 kB 935.8 kB/s eta 0:00:00
 Building wheels for collected packages: transformers-stream-generator
   Building wheel for transformers-stream-generator (setup.py): started
   Building wheel for transformers-stream-generator (setup.py): finished with status 'done'
-  Created wheel for transformers-stream-generator: filename=transformers_stream_generator-0.0.5-py3-none-any.whl size=12443 sha256=6402b7cd2245a62b76f00b09ed7667fb30cfc757acd2946cefb10a9f47dc564d
-  Stored in directory: /tmp/pip-ephem-wheel-cache-jhfobrg9/wheels/86/ae/18/5a701e6998e143f0b9a2f1fe9dd485dc97561c4d9a196c63a5
+  Created wheel for transformers-stream-generator: filename=transformers_stream_generator-0.0.5-py3-none-any.whl size=12443 sha256=d14fb78cd9834da531979b4e0b51534d5c93708a7dce0b9754de46ffd43007c4
+  Stored in directory: /tmp/pip-ephem-wheel-cache-4tpkonjy/wheels/86/ae/18/5a701e6998e143f0b9a2f1fe9dd485dc97561c4d9a196c63a5
 Successfully built transformers-stream-generator
 Installing collected packages: packaging, pipdeptree, transformers-stream-generator
   Attempting uninstall: packaging
@@ -31712,20 +32261,20 @@ spacy 3.5.2 requires pydantic!=1.8,!=1.8.1,<1.11.0,>=1.7.4, but you have pydanti
 thinc 8.1.9 requires pydantic!=1.8,!=1.8.1,<1.11.0,>=1.7.4, but you have pydantic 2.7.0 which is incompatible.
 [0mSuccessfully installed packaging-24.0 pipdeptree-2.18.1 transformers-stream-generator-0.0.5
 [91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
-[0mRemoving intermediate container e91d7554a7f5
- ---> e3979a43c50c
+[0mRemoving intermediate container 82e85a869243
+ ---> 1f0a1b3807c7
 Step 25/27 : RUN echo "export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7" >> /root/.bashrc
- ---> Running in 79fb26ce9ed9
-Removing intermediate container 79fb26ce9ed9
- ---> 05b5b299c604
+ ---> Running in d4fcaafa1b43
+Removing intermediate container d4fcaafa1b43
+ ---> 2ee5e01b5b71
 Step 26/27 : ENTRYPOINT ["/usr/bin/python3", "-m", "vllm.entrypoints.openai.api_server"]
- ---> Running in ad9bbcfd23e4
-Removing intermediate container ad9bbcfd23e4
- ---> d554c656e055
+ ---> Running in afcd0686c347
+Removing intermediate container afcd0686c347
+ ---> 51431be4cbf5
 Step 27/27 : CMD ["--tensor-parallel-size", "8"]
- ---> Running in f680ef22a943
-Removing intermediate container f680ef22a943
- ---> 14240418c69d
+ ---> Running in 1fbe68eecc84
+Removing intermediate container 1fbe68eecc84
+ ---> f7ed05426312
 [Warning] One or more build-args [all_proxy] were not consumed
-Successfully built 14240418c69d
+Successfully built f7ed05426312
 Successfully tagged vllm:latest

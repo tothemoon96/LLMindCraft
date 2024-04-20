@@ -50,7 +50,7 @@ RUN cd pytorch && \
     python3 setup.py clean
 
 # build vllm
-ENV FLASH_ATTENTION_VERSION=2.3.6
+ENV FLASH_ATTENTION_VERSION=2.5.7
 RUN git clone --recursive https://github.com/Dao-AILab/flash-attention.git && \
     cd flash-attention && \
     git checkout v${FLASH_ATTENTION_VERSION} && \
@@ -59,7 +59,9 @@ RUN git clone --recursive https://github.com/Dao-AILab/flash-attention.git && \
 RUN cd flash-attention && \
     MAX_JOBS=208 FLASH_ATTENTION_FORCE_BUILD=TRUE FLASH_ATTENTION_FORCE_CXX11_ABI=FALSE python setup.py bdist_wheel && \
     cd dist && \
-    pip install flash_attn-${FLASH_ATTENTION_VERSION}-cp38-cp38-linux_x86_64.whl
+    pip install flash_attn-${FLASH_ATTENTION_VERSION}-cp38-cp38-linux_x86_64.whl && \
+    cd .. && \
+    python3 setup.py clean
 RUN git clone --recursive https://github.com/vllm-project/vllm.git && \
     cd vllm && \
     git checkout v0.4.0.post1 && \
